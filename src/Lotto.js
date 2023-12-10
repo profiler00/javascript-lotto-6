@@ -1,8 +1,15 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { checkLength, checkDuplicates, checkLottoNumber } from "./validations/lottoNumberValidation";
-import { checkBonusNumber, checkBonusDuplicates } from "./validations/bonusNumberValidation";
-import { lottoCount } from "./constants/constants";
-import { errorMessage } from "./constants/messages";
+import {
+  checkLength,
+  checkDuplicates,
+  checkLottoNumber,
+} from './validations/lottoNumberValidation';
+import {
+  checkBonusNumber,
+  checkBonusDuplicates,
+} from './validations/bonusNumberValidation';
+import { lottoCount } from './constants/constants';
+import { errorMessage } from './constants/messages';
 
 class Lotto {
   #numbers;
@@ -25,11 +32,11 @@ class Lotto {
   }
 
   getBonus(number) {
-    this.#validateBonus(number);
+    this.validateBonus(number);
     this.bonus = number;
   }
 
-  #validateBonus(number) {
+  validateBonus(number) {
     if (checkBonusNumber(number)) {
       throw new Error(errorMessage.INVALID_RANGE);
     }

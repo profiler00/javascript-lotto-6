@@ -19,7 +19,6 @@ const Validation = {
   isNotValidNumber(number) {
     const isNotValid =
       number < lotto.MIN_RANGE || number > lotto.MAX_RANGE || isNaN(number);
-
     return isNotValid;
   },
 
@@ -29,7 +28,6 @@ const Validation = {
         return true;
       }
     }
-
     return false;
   },
 
@@ -41,7 +39,6 @@ const Validation = {
     if (this.isNotValidNumber(number)) {
       return true;
     }
-
     return false;
   },
 

@@ -1,15 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import {
-  checkLength,
-  checkDuplicates,
-  checkLottoNumber,
-} from './validations/lottoNumberValidation';
-import {
-  checkBonusNumber,
-  checkBonusDuplicates,
-} from './validations/bonusNumberValidation';
 import { lottoCount } from './constants/constants';
 import { errorMessage } from './constants/messages';
+import Validation from './validations/Validation';
 
 class Lotto {
   #numbers;
@@ -20,33 +12,33 @@ class Lotto {
   }
 
   #validate(numbers) {
-    if (checkLength(numbers)) {
+    if (Validation.checkLength(numbers)) {
       throw new Error(errorMessage.INVALID_LENGTH);
     }
-    if (checkLottoNumber(numbers)) {
+    if (Validation.checkLottoNumber(numbers)) {
       throw new Error(errorMessage.INVALID_RANGE);
     }
-    if (checkDuplicates(numbers)) {
+    if (Validation.checkDuplicates(numbers)) {
       throw new Error(errorMessage.HAS_DUPLICATES);
-    }
-  }
-
-  getBonus(number) {
-    this.validateBonus(number);
-    this.bonus = number;
-  }
-
-  validateBonus(number) {
-    if (checkBonusNumber(number)) {
-      throw new Error(errorMessage.INVALID_RANGE);
-    }
-    if (checkBonusDuplicates(this.#numbers, number)) {
-      throw new Error(errorMessage.BONUS_DUPLICATES);
     }
   }
 
   printLottoNumbers() {
     MissionUtils.Console.print(`[${this.#numbers.join(', ')}]`);
+  }
+
+  getBonus(number) {
+    this.#validateBonus(number);
+    this.bonus = number;
+  }
+
+  #validateBonus(number) {
+    if (Validation.checkBonusNumber(number)) {
+      throw new Error(errorMessage.INVALID_RANGE);
+    }
+    if (Validation.checkBonusDuplicates(this.#numbers, number)) {
+      throw new Error(errorMessage.BONUS_DUPLICATES);
+    }
   }
 
   compareLotto(winningLotto) {

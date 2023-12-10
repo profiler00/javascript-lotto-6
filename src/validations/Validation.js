@@ -1,4 +1,5 @@
 import { lotto } from '../constants/constants';
+import { errorMessage } from '../constants/messages';
 
 const Validation = {
   isNotValid(input) {
@@ -17,9 +18,7 @@ const Validation = {
 
   isNotValidNumber(number) {
     const isNotValid =
-      number < lotto.MIN_RANGE ||
-      number > lotto.MAX_RANGE ||
-      Number.isNaN(number);
+      number < lotto.MIN_RANGE || number > lotto.MAX_RANGE || isNaN(number);
 
     return isNotValid;
   },

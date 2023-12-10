@@ -30,7 +30,7 @@ describe('함수별 기능 테스트', () => {
     const result = handler.getRanking(input);
     const output = {
       FIFTH: 2,
-      FORTH: 1,
+      FOURTH: 1,
       THIRD: 0,
       SECOND: 1,
       FIRST: 0,
@@ -43,7 +43,7 @@ describe('함수별 기능 테스트', () => {
     const handler = new LottoHandler();
     const input = {
       FIFTH: 1,
-      FORTH: 1,
+      FOURTH: 1,
       THIRD: 1,
       SECOND: 0,
       FIRST: 0,

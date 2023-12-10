@@ -9,8 +9,8 @@ const lottoMatch = {
   FIFTH: 3,
   FOURTH: 4,
   THIRD: 5,
-  SECOND: 6,
-  FIRST: 7,
+  SECOND: 7,
+  FIRST: 6,
 };
 
 const lottoPrize = {

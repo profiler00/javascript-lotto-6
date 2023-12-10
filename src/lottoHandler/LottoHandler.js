@@ -26,7 +26,7 @@ class LottoHandler {
   }
 
   getRanking(countArray) {
-    const rank = { FIFTH: 0, FORTH: 0, THIRD: 0, SECOND: 0, FIRST: 0 };
+    const rank = { FIFTH: 0, FOURTH: 0, THIRD: 0, SECOND: 0, FIRST: 0 };
     countArray.forEach(count => {
       const rankKey = Object.keys(rank).find(key => count === lottoMatch[key]);
       if (rankKey) rank[rankKey] += 1;

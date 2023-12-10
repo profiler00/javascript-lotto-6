@@ -1,6 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { lottoCount } from './constants/constants';
 import { errorMessage } from './constants/messages';
+
 import Validation from './validations/Validation';
 
 class Lotto {
@@ -23,31 +24,21 @@ class Lotto {
     }
   }
 
+  getLottoNumbers() {
+    return this.#numbers;
+  }
+
   printLottoNumbers() {
     MissionUtils.Console.print(`[${this.#numbers.join(', ')}]`);
   }
 
-  getBonus(number) {
-    this.#validateBonus(number);
-    this.bonus = number;
-  }
-
-  #validateBonus(number) {
-    if (Validation.checkBonusNumber(number)) {
-      throw new Error(errorMessage.INVALID_RANGE);
-    }
-    if (Validation.checkBonusDuplicates(this.#numbers, number)) {
-      throw new Error(errorMessage.BONUS_DUPLICATES);
-    }
-  }
-
   compareLotto(winningLotto) {
-    const compareCount = this.#numbers.filter(number =>
-      winningLotto.#numbers.includes(number),
+    const compareCount = this.getLottoNumbers().filter(number =>
+      winningLotto.getLottoNumbers().includes(number),
     );
     if (
       compareCount.length === lottoCount.THIRD &&
-      this.#numbers.includes(winningLotto.bonus)
+      this.getLottoNumbers().includes(winningLotto.bonus)
     ) {
       return lottoCount.SECOND;
     }
